@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Module lager_trunc_io</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module lager_trunc_io</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#types">Data Types</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Module to print out terms for logging.
+
+
+<h2><a name="description">Description</a></h2><p>Module to print out terms for logging. Limits by length rather than depth.</p>
+ 
+  <p>The resulting string may be slightly larger than the limit; the intention  
+is to provide predictable CPU and memory consumption for formatting  
+terms, not produce precise string lengths.</p>
+ 
+  <p>Typical use:</p>
+ 
+    <p>trunc_io:print(Term, 500).</p>
+ 
+  <p>Source license: Erlang Public License.
+  Original author: Matthias Lang, <tt>matthias@corelatus.se</tt></p>
+ 
+  Various changes to this module, most notably the format/3 implementation
+  were added by Andrew Thompson <code>&lt;andrew@basho.com&gt;</code>. The module has been renamed
+  to avoid conflicts with the vanilla module.
+<h2><a name="types">Data Types</a></h2>
+
+<h3 class="typedecl"><a name="type-option">option()</a></h3>
+<p><tt>option() = {depth, integer()} | {lists_as_strings, boolean()} | {force_strings, boolean()}</tt></p>
+
+
+<h3 class="typedecl"><a name="type-options">options()</a></h3>
+<p><tt>options() = [<a href="#type-option">option()</a>]</tt></p>
+
+
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#format-3">format/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#format-4">format/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#fprint-2">fprint/2</a></td><td>Returns an flattened list containing the ASCII representation of the given
+  term.</td></tr>
+<tr><td valign="top"><a href="#fprint-3">fprint/3</a></td><td>Returns an flattened list containing the ASCII representation of the given
+  term.</td></tr>
+<tr><td valign="top"><a href="#perf-0">perf/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#perf-3">perf/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#perf1-0">perf1/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#print-2">print/2</a></td><td>Returns {List, Length}.</td></tr>
+<tr><td valign="top"><a href="#print-3">print/3</a></td><td>Returns {List, Length}.</td></tr>
+<tr><td valign="top"><a href="#safe-2">safe/2</a></td><td>Same as print, but never crashes.</td></tr>
+<tr><td valign="top"><a href="#test-0">test/0</a></td><td></td></tr>
+<tr><td valign="top"><a href="#test-2">test/2</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="format-3">format/3</a></h3>
+<div class="spec">
+<p><tt>format(Fmt, Args, Max) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="format-4">format/4</a></h3>
+<div class="spec">
+<p><tt>format(Fmt, Args, Max, Options) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="fprint-2">fprint/2</a></h3>
+<div class="spec">
+<p><tt>fprint(Term::term(), Max::pos_integer()) -&gt; string()</tt><br></p>
+</div><p>Returns an flattened list containing the ASCII representation of the given
+  term.</p>
+
+<h3 class="function"><a name="fprint-3">fprint/3</a></h3>
+<div class="spec">
+<p><tt>fprint(T::term(), Max::pos_integer(), Options::<a href="#type-options">options()</a>) -&gt; string()</tt><br></p>
+</div><p>Returns an flattened list containing the ASCII representation of the given
+  term.</p>
+
+<h3 class="function"><a name="perf-0">perf/0</a></h3>
+<div class="spec">
+<p><tt>perf() -&gt; ok</tt><br></p>
+</div>
+
+<h3 class="function"><a name="perf-3">perf/3</a></h3>
+<div class="spec">
+<p><tt>perf(M::atom(), F::atom(), Reps::integer()) -&gt; done</tt><br></p>
+</div>
+
+<h3 class="function"><a name="perf1-0">perf1/0</a></h3>
+<div class="spec">
+<p><tt>perf1() -&gt; {non_neg_integer(), non_neg_integer()}</tt><br></p>
+</div>
+
+<h3 class="function"><a name="print-2">print/2</a></h3>
+<div class="spec">
+<p><tt>print(Term::term(), Max::pos_integer()) -&gt; {iolist(), pos_integer()}</tt><br></p>
+</div><p>Returns {List, Length}</p>
+
+<h3 class="function"><a name="print-3">print/3</a></h3>
+<div class="spec">
+<p><tt>print(Term::term(), Max::pos_integer(), Options::<a href="#type-options">options()</a> | #print_options{}) -&gt; {iolist(), pos_integer()}</tt><br></p>
+</div><p>Returns {List, Length}</p>
+
+<h3 class="function"><a name="safe-2">safe/2</a></h3>
+<div class="spec">
+<p><tt>safe(What::term(), Len::pos_integer()) -&gt; {string(), pos_integer()} | {string()}</tt><br></p>
+</div><p><p>Same as print, but never crashes.</p>
+ 
+  This is a tradeoff. Print might conceivably crash if it's asked to
+  print something it doesn't understand, for example some new data
+  type in a future version of Erlang. If print crashes, we fall back
+  to io_lib to format the term, but then the formatting is
+  depth-limited instead of length limited, so you might run out
+  memory printing it. Out of the frying pan and into the fire.
+ </p>
+
+<h3 class="function"><a name="test-0">test/0</a></h3>
+<div class="spec">
+<p><tt>test() -&gt; ok</tt><br></p>
+</div>
+
+<h3 class="function"><a name="test-2">test/2</a></h3>
+<div class="spec">
+<p><tt>test(Mod::atom(), Func::atom()) -&gt; ok</tt><br></p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, Apr 30 2012, 13:50:41.</i></p>
+</body>
+</html>

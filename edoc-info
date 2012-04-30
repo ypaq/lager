@@ -1,0 +1,5 @@
+{application,lager}.
+{packages,[]}.
+{modules,[lager,lager_console_backend,lager_crash_log,lager_file_backend,
+          lager_format,lager_mochiglobal,lager_stdlib,lager_transform,
+          lager_trunc_io,lager_util]}.
